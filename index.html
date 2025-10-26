@@ -1,103 +1,45 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Your Name — Portfolio</title>
     <meta name="description" content="A simple, responsive portfolio template to build on." />
-    <style>
-        :root{
-            --bg:#0f1724; --panel:#0b1220; --muted:#9aa4b2; --accent:#6ee7b7; --glass:rgba(255,255,255,0.03);
-            --radius:12px; --gap:18px; --maxw:1100px;
-            font-synthesis: none;
-        }
-        *{box-sizing:border-box}
-        html,body{height:100%}
-        body{
-            margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
-            background:
-                radial-gradient(600px 400px at 10% 10%, rgba(110,231,183,0.06), transparent 8%),
-                radial-gradient(500px 300px at 90% 90%, rgba(99,102,241,0.04), transparent 10%),
-                var(--bg);
-            color:#e6eef6; -webkit-font-smoothing:antialiased;
-            line-height:1.5; padding:36px;
-        }
-        .container{max-width:var(--maxw); margin:0 auto; display:grid; gap:var(--gap)}
-        header{display:flex; align-items:center; justify-content:space-between; gap:12px}
-        .brand{display:flex; gap:12px; align-items:center}
-        .logo{
-            width:44px; height:44px; border-radius:10px;
-            display:grid; place-items:center; background:linear-gradient(135deg,var(--accent),#60a5fa);
-            color:#042027; font-weight:700; font-size:18px;
-        }
-        nav{display:flex; gap:12px; align-items:center}
-        nav a{color:var(--muted); text-decoration:none; padding:8px 10px; border-radius:8px; font-weight:600}
-        nav a:hover{color:white; background:var(--glass)}
-        .cta{background:linear-gradient(90deg,var(--accent),#60a5fa); color:#042027; padding:8px 12px; border-radius:10px; text-decoration:none; font-weight:700}
-        main{display:grid; gap:var(--gap)}
-        .hero{
-            display:grid; grid-template-columns:1fr 320px; gap:22px; align-items:center;
-            background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
-            padding:28px; border-radius:var(--radius);
-            box-shadow:0 6px 30px rgba(2,6,23,0.6);
-        }
-        .hero h1{margin:0 0 8px; font-size: clamp(1.6rem, 3.6vw, 2.25rem)}
-        .hero p{margin:0 0 18px; color:var(--muted) }
-        .hero .actions{display:flex; gap:12px}
-        .card{
-            background:linear-gradient(180deg, rgba(255,255,255,0.015), transparent);
-            padding:18px; border-radius:12px;
-        }
-        .profile{
-            display:flex; flex-direction:column; align-items:center; text-align:center; gap:12px;
-            padding:22px;
-        }
-        .avatar{
-            width:120px; height:120px; border-radius:999px; background:linear-gradient(135deg,#223 50%, #334 100%);
-            display:grid; place-items:center; font-weight:700; color:var(--accent); font-size:28px;
-        }
-        section{display:grid; gap:12px}
-        .grid{display:grid; gap:12px}
-        .projects{grid-template-columns:repeat(auto-fit, minmax(220px,1fr))}
-        .project{
-            padding:14px; border-radius:10px; background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
-            display:flex; flex-direction:column; gap:10px; min-height:160px;
-        }
-        .project .thumb{height:100px; border-radius:8px; background:linear-gradient(90deg,#0f1724, #0a2540); display:flex; align-items:center; justify-content:center; color:var(--muted)}
-        .skills{display:flex; gap:8px; flex-wrap:wrap}
-        .skill{background:rgba(255,255,255,0.03); padding:6px 10px; border-radius:999px; color:var(--muted); font-weight:600; font-size:13px}
-        form{display:grid; gap:8px}
-        input,textarea{background:transparent; border:1px solid rgba(255,255,255,0.06); padding:10px; color:inherit; border-radius:8px; outline:none}
-        input::placeholder, textarea::placeholder{color:rgba(255,255,255,0.35)}
-        button{border:0; padding:10px 14px; border-radius:10px; cursor:pointer; font-weight:700; background:var(--accent); color:#042027}
-        footer{display:flex; justify-content:space-between; align-items:center; gap:12px; color:var(--muted); font-size:14px; padding-top:6px}
-        @media (max-width:880px){
-            .hero{grid-template-columns:1fr; text-align:center}
-            nav{display:none}
-            header{align-items:start; flex-direction:column; gap:8px}
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="container">
         <header>
+
+            <!-- Branding -->
             <div class="brand">
                 <div class="logo" aria-hidden="true">YN</div>
                 <div>
                     <div style="font-weight:800">Your Name</div>
                     <div style="font-size:13px;color:var(--muted)">Frontend Developer • Designer</div>
+
+                    <div style="margin-top:4px">
+                        <label class="theme-switch" title="Toggle light/dark theme" aria-label="Toggle light/dark theme">
+                            <input id="themeToggle" type="checkbox" />
+                            <span class="slider" aria-hidden="true"></span>
+                        </label>
+                    </div>
                 </div>
             </div>
 
+            <!-- Navigation -->
             <nav aria-label="Main navigation">
                 <a href="#about">About</a>
                 <a href="#projects">Projects</a>
                 <a href="#contact">Contact</a>
                 <a class="cta" href="#projects">Work</a>
             </nav>
-        </header>
 
+        </header>
         <main>
+            <!-- Hero Section -->
             <section class="hero card" aria-labelledby="intro">
                 <div>
                     <h1 id="intro">Hi — I'm Your Name. I build simple, beautiful web apps.</h1>
@@ -116,11 +58,13 @@
                 </aside>
             </section>
 
+            <!-- About Section -->
             <section id="about" class="card">
                 <h2 style="margin:0 0 8px">About</h2>
                 <p style="margin:0;color:var(--muted)">A short paragraph describing you—your background, favorite tech, and what kind of projects you like to work on. Keep it concise and update as you grow.</p>
             </section>
 
+            <!-- Projects Section -->
             <section id="projects" class="grid projects">
                 <h2 style="margin:0 0 8px">Selected Projects</h2>
                 <div style="display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
@@ -156,6 +100,7 @@
                 </div>
             </section>
 
+            <!-- Skills Section -->
             <section class="card">
                 <h2 style="margin:0 0 8px">Skills</h2>
                 <div class="skills">
@@ -168,6 +113,7 @@
                 </div>
             </section>
 
+            <!-- Contact Section -->
             <section id="contact" class="card">
                 <h2 style="margin:0 0 8px">Contact</h2>
                 <p style="margin:0 0 8px;color:var(--muted)">Want to work together or ask a question? Send a message or email me directly at <a href="mailto:you@example.com" style="color:var(--accent)">you@example.com</a>.</p>
@@ -183,8 +129,9 @@
                 </form>
             </section>
         </main>
-
+            <!-- Footer -->
         <footer>
+            
             <div>© <span id="year"></span> Your Name</div>
             <div style="display:flex;gap:10px">
                 <a href="#" style="color:var(--muted);text-decoration:none">Twitter</a>
@@ -193,28 +140,6 @@
             </div>
         </footer>
     </div>
-
-    <script>
-        // Small interactive bits: form handling and year
-        document.getElementById('year').textContent = new Date().getFullYear();
-
-        const form = document.getElementById('contactForm');
-        const status = document.getElementById('status');
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const name = form.name.value.trim();
-            const email = form.email.value.trim();
-            const message = form.message.value.trim();
-            if (!name || !email || !message) {
-                status.textContent = 'Please complete all fields.';
-                return;
-            }
-            // Replace with your preferred backend endpoint or service
-            // For now we open the user's email client as a fallback:
-            const mailto = `mailto:you@example.com?subject=${encodeURIComponent('Portfolio contact from ' + name)}&body=${encodeURIComponent(message + '\\n\\n' + 'From: ' + name + ' <' + email + '>')}`;
-            window.location.href = mailto;
-            status.textContent = 'Opening email client…';
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
