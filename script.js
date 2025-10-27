@@ -1,19 +1,4 @@
-(function(){
-    const toggle = document.getElementById('themeToggle');
-    const stored = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const isDark = stored ? stored === 'dark' : prefersDark;
 
-    const apply = theme => document.documentElement.setAttribute('data-theme', theme);
-    apply(isDark ? 'dark' : 'light');
-    toggle.checked = isDark;
-
-    toggle.addEventListener('change', () => {
-        const theme = toggle.checked ? 'dark' : 'light';
-        apply(theme);
-        localStorage.setItem('theme', theme);
-    });
-})();
 
 // Small interactive bits: form handling and year
 document.getElementById('year').textContent = new Date().getFullYear();
@@ -36,3 +21,39 @@ form.addEventListener('submit', (e) => {
     window.location.href = mailto;
     status.textContent = 'Opening email client…';
 });
+
+// Button press animation
+{
+const cta = document.getElementsByClassName('cta');
+const PRESS_CLASS = 'pressed';
+let timeoutId = null;
+
+function addPress(duration = 420){
+    clearTimeout(timeoutId);
+    cta.classList.add(PRESS_CLASS);
+    // ensure class removed after animation
+    timeoutId = setTimeout(()=> btn.classList.remove(PRESS_CLASS), duration);
+}
+
+// pointer events (mouse & touch)
+cta.addEventListener('pointerdown', e => {
+    // only primary button
+    if (e.isPrimary === false || (e.button && e.button !== 0)) return;
+    addPress();
+});
+
+// keyboard activation (Space or Enter)
+cta.addEventListener('keydown', e => {
+    if (e.code === 'Space' || e.code === 'Enter') {
+        // prevent space from scrolling
+        if (e.code === 'Space') e.preventDefault();
+        addPress();
+    }
+});
+
+// remove class if focus lost
+cta.addEventListener('blur', ()=> {
+    clearTimeout(timeoutId);
+    cta.classList.remove(PRESS_CLASS);
+});
+}
